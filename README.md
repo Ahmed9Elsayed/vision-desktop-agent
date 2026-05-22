@@ -10,7 +10,7 @@ A Python automation agent that uses **multi-model AI visual grounding** to locat
 
 - [What It Does](#what-it-does)
 - [The Grounding Engine](#the-grounding-engine)
-- [Smart Design Decisions](#smart-design-decisions)
+- [Key Design Decisions](#key-design-decisions)
 - [Two Modes](#two-modes)
 - [Robustness](#robustness)
 - [Known Limitations](#known-limitations)
@@ -74,7 +74,7 @@ The two-stage approach matters because the first pass gives you a rough area, th
 
 ---
 
-## Smart Design Decisions
+## Key Design Decisions
 
 A few non-obvious implementation choices worth calling out:
 
@@ -86,10 +86,9 @@ When there are multiple Notepad variants on the desktop (`Notepad`, `Notepad3`, 
 # src/config.py
 TARGET_LABEL = "Notepad3"
 ```
-
-The logic has two layers:
-- **Multiple Notepad icons present** → picks the one whose label exactly matches `TARGET_LABEL`, and explicitly ignores others like `Notepad++` even if their name contains "Notepad"
-- **Only one Notepad icon present** → picks it regardless of whether its label matches exactly — no crash over a minor naming mismatch
+The logic enforces strict target resolution:
+- **Exact Match Required** → The agent specifically isolates the icon whose text perfectly matches `TARGET_LABEL`. It explicitly ignores other notepad decoys or similar icons like `Notepad++`.
+- **Zero-Guessing Policy** → If the exact target is missing, the system is instructed to gracefully abort the interaction rather than guessing or falling back to differently named icons.
 
 If nothing is found at all, the grounding model returns a confirmed absence and the retry loop kicks in. One config variable, graceful at every edge case.
 
@@ -221,7 +220,7 @@ uv run python main_general.py
 
 ## Known Limitations
 
-**Strict Target Enforcement (Mode 1):** The specific automation agent is designed for deterministic execution. If the `TARGET_LABEL` icon is not present on screen, the system will *most of the time* halt and skip the task rather than picking a random Notepad shortcut — preventing unintended data writes to the wrong application. The fallback to any generic Notepad only applies when exactly one Notepad icon exists.
+**Strict Target Enforcement:** Mode 1 is engineered for strict deterministic execution. If the specific `TARGET_LABEL` icon is not present on the screen, the system is instructed to **halt and skip the task** rather than picking a generic alternative of the other available notepad shortcuts. This guarantees safety by preventing unintended data writes to unverified applications. *(Note: Due to the inherently non-deterministic nature of Vision-Language Models, there remains a rare edge case where the model may hallucinate and select a differently named notepad icon if it is the only viable notepad instance/shortcut on screen, but the intended architectural baseline is a full halt).*
 
 **Display Scaling:** Best results at 1920×1080 with standard Windows 11 scaling (100%–125%). At extreme scaling values or non-standard resolutions, coordinate mapping may drift slightly.
 
