@@ -243,23 +243,23 @@ To make these tests harder, two deliberate constraints were applied throughout:
 **Top-Left Corner**
 Grounding the icon placed in the top-left area of the desktop.
 
-<!-- https://github.com/user-attachments/assets/top_left_normal.mp4 -->
+https://github.com/user-attachments/assets/6965c017-ed94-428d-8355-9d0f505f8e32
 
-<video src="Test Cases/top_left_normal.mp4" controls width="100%"></video>
+<!-- <video src="Test Cases/top_left_normal.mp4" controls width="100%"></video> -->
 
 **Center of Screen**
 Grounding the icon when placed roughly in the center of the desktop.
 
-<!-- https://github.com/user-attachments/assets/center_normal.mp4 -->
+https://github.com/user-attachments/assets/433ee494-514e-4a55-b296-f116e56e7f1d
 
-<video src="Test Cases/center_normal.mp4" controls width="100%"></video>
+<!-- <video src="Test Cases/center_normal.mp4" controls width="100%"></video> -->
 
 **Bottom-Right Corner**
 Grounding the icon from the bottom-right area.
 
-<!-- https://github.com/user-attachments/assets/bottom_right_normal.mp4 -->
+https://github.com/user-attachments/assets/6a1d43f5-60ba-4da1-b293-755f46e5961c
 
-<video src="Test Cases/bottom_right_normal.mp4" controls width="100%"></video>
+<!-- <video src="Test Cases/bottom_right_normal.mp4" controls width="100%"></video> -->
 
 ---
 
@@ -268,23 +268,23 @@ Grounding the icon from the bottom-right area.
 **Correct Version Selected from Multiple Notepad Icons**
 Several Notepad shortcuts are on the desktop. The agent picks the one matching `TARGET_LABEL` exactly and ignores the rest.
 
-<!-- https://github.com/user-attachments/assets/detecing_correct_version.mp4 -->
+https://github.com/user-attachments/assets/da3f6ea9-393c-4651-810d-a642104e51d6
 
-<video src="Test Cases/detecing correct version of multiple versions.mp4" controls width="100%"></video>
+<!-- <video src="Test Cases/detecing correct version of multiple versions.mp4" controls width="100%"></video> -->
 
 **`TARGET_LABEL` Not on Desktop — Agent Halts, Doesn't Pick a Wrong One**
 Multiple Notepad shortcuts exist but none matches `TARGET_LABEL`. The agent correctly identifies this, does not fall back to a random icon, and skips the task entirely.
 
-<!-- https://github.com/user-attachments/assets/multiple_notepad_not_correct.mp4 -->
+https://github.com/user-attachments/assets/2bc18592-c95d-424f-af71-6ccf3af0969e
 
-<video src="Test Cases/multiple notepad icons are on desktop but not the correct one.mp4" controls width="100%"></video>
+<!-- <video src="Test Cases/multiple notepad icons are on desktop but not the correct one.mp4" controls width="100%"></video> -->
 
 **Terminating Blocking Windows Without Picking the Wrong Notepad**
 The agent closes any foreground window blocking the desktop view, then re-grounds — while still correctly refusing to interact with non-target Notepad shortcuts.
 
-<!-- https://github.com/user-attachments/assets/terminating_windows.mp4 -->
+https://github.com/user-attachments/assets/22628398-9421-4fe0-bc81-b31a38ac6551
 
-<video src="Test Cases/terminating any window opened to search for icon behind and not falling for incorrect version of notepads.mp4" controls width="100%"></video>
+<!-- <video src="Test Cases/terminating any window opened to search for icon behind and not falling for incorrect version of notepads.mp4" controls width="100%"></video> -->
 
 ---
 
@@ -293,30 +293,30 @@ The agent closes any foreground window blocking the desktop view, then re-ground
 **Icon Partially Obscured**
 Another window partially overlaps the Notepad icon. The agent still grounds it correctly.
 
-<!-- https://github.com/user-attachments/assets/icon_partially_obscured.mp4 -->
+https://github.com/user-attachments/assets/bd77a3cf-cd16-4744-a374-93c8e2a586f9
 
-<video src="Test Cases/icon partially obscured.mp4" controls width="100%"></video>
+<!-- <video src="Test Cases/icon partially obscured.mp4" controls width="100%"></video> -->
 
 **Notepad Not on Desktop at All**
 The icon is completely missing. The agent detects the confirmed absence, exhausts its retries, and moves on without crashing.
 
-<!-- https://github.com/user-attachments/assets/notepad_not_on_desktop.mp4 -->
+https://github.com/user-attachments/assets/17bdbf3c-a7b3-4595-99a9-cea8ec10331f
 
-<video src="Test Cases/notepad is not on desktop.mp4" controls width="100%"></video>
+<!-- <video src="Test Cases/notepad is not on desktop.mp4" controls width="100%"></video> -->
 
 **Misclick + Launch Validation**
 The agent clicks the grounded coordinates, but a nearby icon's boundary intercepts the click and opens the wrong app. The launch validator detects that Notepad didn't open, closes the wrong window, and retries.
 
-<!-- https://github.com/user-attachments/assets/notepad_miss_clicked.mp4 -->
+https://github.com/user-attachments/assets/d4056774-4ff3-4cb7-8454-7ca461df2c0b
 
-<video src="Test Cases/notepad miss clicked pop-up, validation after clicking.mp4" controls width="100%"></video>
+<!-- <video src="Test Cases/notepad miss clicked pop-up, validation after clicking.mp4" controls width="100%"></video> -->
 
 **Moving the Icon Mid-Execution**
 The Notepad icon is physically moved to a different position while the script is already running. On the next iteration, the agent takes a fresh screenshot, re-grounds from scratch, and finds it in its new location — proving no coordinates are cached or hardcoded.
 
-<!-- https://github.com/user-attachments/assets/moving_icon_mid_execution.mp4 -->
+https://github.com/user-attachments/assets/e61233ee-7d7d-4f05-b931-6e1eb0df36d6
 
-<video src="Test Cases/moving icon mid execution.mp4" controls width="100%"></video>
+<!-- <video src="Test Cases/moving icon mid execution.mp4" controls width="100%"></video> -->
 
 ---
 
@@ -325,16 +325,16 @@ The Notepad icon is physically moved to a different position while the script is
 **100% Scale + Small Icons View**
 Windows display scale set to 100% with the desktop in small icon view — a denser, more challenging layout. The agent still picks the correct Notepad version among multiple shortcuts.
 
-<!-- https://github.com/user-attachments/assets/100_scale_small_icons.mp4 -->
+https://github.com/user-attachments/assets/59c85c4d-4f46-4aef-95d6-325b82691805
 
-<video src="Test Cases/100% scale + small icons.mp4" controls width="100%"></video>
+<!-- <video src="Test Cases/100% scale + small icons.mp4" controls width="100%"></video> -->
 
 **Light Desktop Theme**
 Full run on a light Windows theme instead of dark. The grounding engine is theme-agnostic — same performance, no config changes needed.
 
-<!-- https://github.com/user-attachments/assets/light_theme.mp4 -->
+https://github.com/user-attachments/assets/6e41ec92-5b33-478a-87bf-26fff6d02907
 
-<video src="Test Cases/light theme.mp4" controls width="100%"></video>
+<!-- <video src="Test Cases/light theme.mp4" controls width="100%"></video> -->
 
 ---
 
@@ -343,16 +343,16 @@ Full run on a light Windows theme instead of dark. The grounding engine is theme
 **GitHub Desktop — Located by Description**
 Mode 2 opens GitHub Desktop using only the natural language description *"The version control desktop client used by developers"* — no icon image, no app name.
 
-<!-- https://github.com/user-attachments/assets/general_path_github.mp4 -->
+https://github.com/user-attachments/assets/ddf04de4-a63c-406e-9322-cc381627f4b8
 
-<video src="Test Cases/general_path_github.mp4" controls width="100%"></video>
+<!-- <video src="Test Cases/general_path_github.mp4" controls width="100%"></video> -->
 
 **Recycle Bin — Located by Description**
 Mode 2 opens the Recycle Bin using the description *"The system folder used to recover deleted files or empty the trash"*.
 
-<!-- https://github.com/user-attachments/assets/general_path_recycle_bin.mp4 -->
+https://github.com/user-attachments/assets/8c3d6e76-575f-49b2-a987-111c076b1de6
 
-<video src="Test Cases/general_path_recycle bin open.mp4" controls width="100%"></video>
+<!-- <video src="Test Cases/general_path_recycle bin open.mp4" controls width="100%"></video> -->
 
 ---
 
