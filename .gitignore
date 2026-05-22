@@ -19,6 +19,9 @@ drivers/msedgedriver.exe
 screenshots/
 logs/
 
+# Test case recordings — uploaded via GitHub attachments, not stored in repo
+Test Cases/
+
 # Scratch/temp files
 pdf_extracted.txt
 pdf_text.txt
